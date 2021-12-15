@@ -12,6 +12,7 @@ muchos retrasos
 Se es más eficiente así y con menor tiempo de carga
 */
 const routes: Routes = [
+	{ path: 'login',  loadChildren: () => import('./login/login.module').then(m=>m.LoginModule)},
 	{ path: '', 
 	  component: MainPageComponent,
 	  children: [
@@ -26,7 +27,8 @@ const routes: Routes = [
 	  	{ path: 'disputes', loadChildren: () => import('./main-page/disputes/disputes.module').then(m=>m.DisputesModule)},
 	  	{ path: 'messages', loadChildren: () => import('./main-page/messages/messages.module').then(m=>m.MessagesModule)},
 	  	{ path: '**', component: Error404Component}
-	  ]}
+	  ]
+	}
 	
 ];
 
