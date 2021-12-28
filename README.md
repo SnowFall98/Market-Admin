@@ -54,6 +54,9 @@ DROPZONE:
 INICIAR ANGULAR SIN "HOT RELOAD":
 `ng serve --live-reload false`
 
+Sweetalert2:
+`npm install sweetalert2`
+
 
 # Errores de ejecución
 Se pueden presentar errores como: 
