@@ -9,6 +9,10 @@ export class UsersService {
 
   constructor(private http:HttpClient) { }
 
+  /*=============================================
+	Tomar la data de la colección usuarios en Firebase
+	=============================================*/
+
   getData(){
 
     return this.http.get(`${environment.urlFirebase}users.json`);
