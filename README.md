@@ -57,6 +57,9 @@ INICIAR ANGULAR SIN "HOT RELOAD":
 Sweetalert2:
 `npm install sweetalert2`
 
+Angular Material:
+`ng add @angular/material` 
+
 
 # Errores de ejecución
 Se pueden presentar errores como: 
