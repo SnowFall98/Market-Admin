@@ -12,14 +12,18 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 
+//Pipes
+import { JsonToStringPipe } from '../../../pipes/json-to-string.pipe';
+
 @NgModule({
-  declarations: [UsersComponent],
+  declarations: [UsersComponent, JsonToStringPipe],
   imports: [
     CommonModule,
     UsersRoutingModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    
   ]
 })
 export class UsersModule { }
