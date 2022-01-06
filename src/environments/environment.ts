@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   urlFirebase: 'https://market-place-363dc-default-rtdb.firebaseio.com/',
   urlLogin: 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBR9IUBZFVT4l1shmmdo1FDELSCOlER3zw',
-  urlGetUser: 'https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyBR9IUBZFVT4l1shmmdo1FDELSCOlER3zw'
+  urlGetUser: 'https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyBR9IUBZFVT4l1shmmdo1FDELSCOlER3zw',
+  urlFiles: 'http://localhost/sistemas-angular/marketplace/src/assets/img/'
 };
 
 /*
