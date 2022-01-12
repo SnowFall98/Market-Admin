@@ -15,9 +15,10 @@ import {MatDialogModule} from '@angular/material/dialog';
 
 //pipes
 import { PipesModule } from '../../../pipes/pipes.module';
+import { NewCategoriesComponent } from './new-categories/new-categories.component';
 
 @NgModule({
-  declarations: [CategoriesComponent],
+  declarations: [CategoriesComponent, NewCategoriesComponent],
   imports: [
     CommonModule,
     CategoriesRoutingModule,

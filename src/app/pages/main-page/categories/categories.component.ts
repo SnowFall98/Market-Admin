@@ -8,6 +8,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { CategoriesService } from 'src/app/services/categories.service';
 import { Icategories } from 'src/app/interface/icategories';
 import { MatDialog } from '@angular/material/dialog';
+import { NewCategoriesComponent } from './new-categories/new-categories.component';
 
 @Component({
   selector: 'app-categories',
@@ -150,6 +151,16 @@ export class CategoriesComponent implements OnInit {
       this.dataSource.paginator.firstPage();
 
     }
+
+  }
+
+  /*=============================================
+	función para llamar el diálogo de creación de categorías
+	=============================================*/
+
+  newCategory(){
+
+    const dialogRef = this.dialog.open(NewCategoriesComponent,{width:'100%'})
 
   }
 
