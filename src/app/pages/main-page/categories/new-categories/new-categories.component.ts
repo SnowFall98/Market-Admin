@@ -6,6 +6,7 @@ import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material/chips';
 import { ImagesService } from 'src/app/services/images.service';
 import { Icategories } from 'src/app/interface/icategories';
+import { alerts } from 'src/app/helpers/alerts';
 
 @Component({
   selector: 'app-new-categories',
@@ -164,7 +165,6 @@ export class NewCategoriesComponent implements OnInit {
 
       if(resp.status == 20){
 
-
         const dataCategory: Icategories = {
 
           icon:this.f.controls.icon.value.split('"')[1],
@@ -176,10 +176,36 @@ export class NewCategoriesComponent implements OnInit {
           state:"hidden"
 
         }
+        
+				/*=============================================
+				Guardar en base de datos la info de la categoría
+				=============================================*/
+
+        this.categoriesServices.postData(dataCategory).subscribe(
+
+          resp =>{
+
+            this.loadData = false;
+
+            alerts.basicAlert("Ok", 'The category', "success")
+
+          },
+
+          err => {
+
+            this.loadData = false;
+
+            alerts.basicAlert("Error", 'Category saving error', "error")
+
+          }
+
+        )
 
       }else {
 
         this.loadData = false;
+
+        alerts.basicAlert("Error", 'Invalid Picture', "error")
 
       }
 
@@ -194,7 +220,7 @@ export class NewCategoriesComponent implements OnInit {
 
   invalidField(field:string){
 
-    return function.invalidField(field, this.f, this.formSubmitted);
+    return functions.invalidField(field, this.f, this.formSubmitted);
 
   }
 
