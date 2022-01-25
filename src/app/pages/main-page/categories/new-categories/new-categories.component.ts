@@ -7,6 +7,7 @@ import {MatChipInputEvent} from '@angular/material/chips';
 import { ImagesService } from 'src/app/services/images.service';
 import { Icategories } from 'src/app/interface/icategories';
 import { alerts } from 'src/app/helpers/alerts';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-new-categories',
@@ -128,7 +129,7 @@ export class NewCategoriesComponent implements OnInit {
   loadData = false;
 
 
-  constructor(private form: FormBuilder, private categoriesServices: CategoriesService, private imageService: ImagesService) { }
+  constructor(private form: FormBuilder, private categoriesServices: CategoriesService, private imageService: ImagesService, public dialogRef: MatDialogRef<NewCategoriesComponent>) { }
 
   ngOnInit(): void {
   }
@@ -186,6 +187,8 @@ export class NewCategoriesComponent implements OnInit {
           resp =>{
 
             this.loadData = false;
+
+            this.dialogRef.close('save');
 
             alerts.basicAlert("Ok", 'The category', "success")
 
