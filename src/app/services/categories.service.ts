@@ -30,4 +30,14 @@ export class CategoriesService {
 
   }
   
+	/*=============================================
+	Guardar información de la categoría
+	=============================================*/
+
+  postData(data: Icategories){
+
+    return this.http.post(`${environment.urlFirebase}categories.json`, data);
+    
+  }
+
 }
