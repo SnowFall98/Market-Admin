@@ -162,6 +162,20 @@ export class CategoriesComponent implements OnInit {
 
     const dialogRef = this.dialog.open(NewCategoriesComponent,{width:'100%'})
 
+    /*=============================================
+		Actualizar el listado de la tabla
+		=============================================*/
+
+    dialogRef.afterClosed().subscribe(result => {
+
+      if (result) {
+
+        this.getData();
+
+      }
+
+    })
+    
   }
 
 }
