@@ -119,6 +119,32 @@
                       {{element.title_list |  jsonToString}}
                     </li>
 
+                    <li class="py-1">
+
+                      <div class="custom-control custom-switch">
+
+                        <input 
+                        *ngIf="element.state == 'show'"
+                        type="checkbox" 
+                        class="custom-control-input" 
+                        id="switch_{{element.id}}"
+                        (change)="changeState($event)"
+                        checked>
+
+                        <input 
+                        *ngIf="element.state != 'show'"
+                        type="checkbox" 
+                        class="custom-control-input" 
+                        id="switch_{{element.id}}"
+                        (change)="changeState($event)"
+                        >
+
+                        <label class="custom-control-label" for="switch_{{element.id}}"></label>
+
+                      </div>
+
+                    </li>
+
                   </ul>
                   
                 </div>
