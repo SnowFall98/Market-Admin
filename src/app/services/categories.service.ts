@@ -40,4 +40,14 @@ export class CategoriesService {
     
   }
 
+  /*=============================================
+	Actualizar información 
+	=============================================*/
+
+  patchData(id:string, data:object){
+
+    return this.http.patch(`${environment.urlFirebase}categories/${id}.json`, data);
+    
+  }
+
 }
