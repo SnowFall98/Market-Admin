@@ -100,6 +100,10 @@ export class CategoriesComponent implements OnInit {
     }
   }
 
+  /*=============================================
+	función para tomar la data de usuarios
+	=============================================*/
+
   getData(){
 
     this.loadData = true;
@@ -176,6 +180,42 @@ export class CategoriesComponent implements OnInit {
 
     })
     
+  }
+
+  /*=============================================
+	Cambiar estado de la categoría
+	=============================================*/
+
+  changeState(e:any){
+
+    if(e.target.checked) {
+
+      const data = {'state':'show'}
+
+      this.categoriesService.patchData(e.target.id.split("_")[1], data)
+      .subscribe(
+
+        ()=>{
+
+          this.getData();
+
+        }
+      )
+
+    }else {
+
+      const data = {'state':'hidden'}
+
+      this.categoriesService.patchData(e.target.id.split("_")[1], data)
+      .subscribe(
+
+        ()=> {
+
+          this.getData()
+
+        }
+      )
+    }
   }
 
 }
