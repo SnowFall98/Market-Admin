@@ -275,4 +275,19 @@ export class NewCategoriesComponent implements OnInit {
 
   }
 
+  /*=============================================
+	Validamos imagen
+	=============================================*/
+
+  validateImage(e:any){
+
+    functions.validateImage(e).then((resp:any) => {
+
+      this.imgTemp = resp;
+      this.uploadFile = e;
+
+    })
+    
+  }
+
 }
