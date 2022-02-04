@@ -19,9 +19,10 @@ import {MatIconModule} from '@angular/material/icon';
 //pipes
 import { PipesModule } from '../../../pipes/pipes.module';
 import { NewCategoriesComponent } from './new-categories/new-categories.component';
+import { EditCategoriesComponent } from './edit-categories/edit-categories.component';
 
 @NgModule({
-  declarations: [CategoriesComponent, NewCategoriesComponent],
+  declarations: [CategoriesComponent, NewCategoriesComponent, EditCategoriesComponent],
   imports: [
     CommonModule,
     CategoriesRoutingModule,
