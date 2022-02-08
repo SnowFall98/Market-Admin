@@ -50,4 +50,14 @@ export class CategoriesService {
     
   }
 
+  /*=============================================
+	Tomar un item de la data colección categorías en Firebase
+	=============================================*/
+
+	getItem(id: string) {
+
+		return this.http.get(`${environment.urlFirebase}categories/${id}.json`);
+		
+	}
+
 }
