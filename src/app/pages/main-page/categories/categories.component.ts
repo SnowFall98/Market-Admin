@@ -9,6 +9,7 @@ import { CategoriesService } from 'src/app/services/categories.service';
 import { Icategories } from 'src/app/interface/icategories';
 import { MatDialog } from '@angular/material/dialog';
 import { NewCategoriesComponent } from './new-categories/new-categories.component';
+import { EditCategoriesComponent } from './edit-categories/edit-categories.component';
 
 @Component({
   selector: 'app-categories',
@@ -216,6 +217,37 @@ export class CategoriesComponent implements OnInit {
         }
       )
     }
+  }
+
+  /*=============================================
+	función para llamar el diálogo de edición de categorías
+	=============================================*/
+
+  editCategory(id:string){
+
+    const dialogRef = this.dialog.open(EditCategoriesComponent,{
+
+      width:'100%',
+      data: {
+        id:id
+      }
+
+    })
+
+    /*=============================================
+		Actualizar el listado de la tabla
+		=============================================*/
+
+    dialogRef.afterClosed().subscribe(result =>{
+
+      if(result){
+
+        this.getData();
+
+      }
+      
+    })
+
   }
 
 }
