@@ -31,7 +31,7 @@
               <button class="btn btn-block bg-gradient-warning" type="button" (click)="newCategory()">New Category</button> 
 
             </div>
-            
+
             <div class="col-12 col-sm-6 col-xl-3 ml-auto">
             
               <input class="form-control" placeholder="Search" (keyup)="applyFilter($event)">   
@@ -93,6 +93,13 @@
                   <i class="fas fa-pencil-alt"></i>             
                 </button>
 
+                <button
+                class="btn btn-sm btn-danger"
+                (click)="deleteCategory(element.id, element.name, element.image)"
+                >
+                  <i class="fas fa-trash"></i>             
+                </button>
+
               </td>
             </ng-container>
 
@@ -125,6 +132,11 @@
                       <strong class="mat-header-cell">Title List:</strong> 
                       {{element.title_list |  jsonToString}}
                     </li>
+
+                    <li class="py-2">
+                      <span class="mx-2 text-muted">·</span>
+                      <strong class="mat-header-cell">View:</strong> 
+                    {{element.view}} </li>
 
                     <li class="py-1">
 
