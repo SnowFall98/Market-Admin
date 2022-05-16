@@ -18,6 +18,8 @@ import {MatIconModule} from '@angular/material/icon';
 
 //pipes
 import { PipesModule } from '../../../pipes/pipes.module';
+
+//componentes para diálogos
 import { NewCategoriesComponent } from './new-categories/new-categories.component';
 import { EditCategoriesComponent } from './edit-categories/edit-categories.component';
 
