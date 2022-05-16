@@ -4,15 +4,15 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
 
-
 @Injectable({
   providedIn: 'root'
 })
+
 export class LoginService {
 
-  constructor(private http: HttpClient) { }
+	constructor(private http: HttpClient) { }
 
-  	/*=============================================
+	/*=============================================
 	LOGIN en Firebase Authentication
 	=============================================*/
 
@@ -29,7 +29,6 @@ export class LoginService {
 				localStorage.setItem('refreshToken', resp.refreshToken);
 
 			})
-
 		);
 	}
 }
