@@ -25,18 +25,18 @@ export class functions{
 	=============================================*/
 
 	static screenSize(minWidth:number, maxWidth:number):boolean{
-		
-		if (window.matchMedia(`(min-width:${minWidth}px) and (max-width:${maxWidth}px)`).matches){
-			
+
+		if(window.matchMedia(`(min-width:${minWidth}px) and (max-width:${maxWidth}px)`).matches){
+
 			return true;
 
-		}else {
+		}else{
 
 			return false;
-
 		}
+
 	}
-	
+
 	/*=============================================
 	Función para validar la imagen
 	=============================================*/
@@ -46,44 +46,44 @@ export class functions{
 		return new Promise(resolve => {
 
 			const image = e.target.files[0];
-			
+
 			/*=============================================
 		    Validamos el formato
 		    =============================================*/
 
-			if(image["type"] !== "image/jpeg" && image["type"] !== "image/png"){
+		    if(image["type"] !== "image/jpeg" && image["type"] !== "image/png"){
 
-				alerts.basicAlert('error', 'The image must be in JPG or PNG format', 'error');
+		    	alerts.basicAlert('error', 'The image must be in JPG or PNG format', 'error');
 
-				return;
-			}
+		    	return;
+		    }
 
 		    /*=============================================
 		    Validamos el tamaño
 		    =============================================*/
 
-			else if (image["size"] > 2000000){
+		    else if(image["size"] > 2000000){
 
-				alerts.basicAlert('error', 'Image must not weigh more than 2MB', 'error');
+		    	alerts.basicAlert('error', 'Image must not weigh more than 2MB', 'error');
 
-				return;
-			}
+		    	return;
+		    }
 
 		    /*=============================================
 		    Mostramos la imagen temporal
 		    =============================================*/
 
-			else {
+		    else{
 
-				let data = new FileReader();
-				data.readAsDataURL(image);
+		    	let data = new FileReader();
+		    	data.readAsDataURL(image);
 
-				data.onloadend = () => {
+		    	data.onloadend = () =>{
 
-					resolve(data.result);
+		    		resolve(data.result);
 
-				}
-			}
+		    	}
+		    }
 		})
 
 	}
@@ -92,9 +92,9 @@ export class functions{
 	Crear URL
 	=============================================*/
 
-	static createUrl(value:string) {
+	static createUrl(value:string){
 
-		value = value.toLocaleLowerCase();
+		value = value.toLowerCase();
 		value = value.replace(/[ ]/g, "-");
 		value = value.replace(/[á]/g, "a");
 		value = value.replace(/[é]/g, "e");
@@ -107,6 +107,3 @@ export class functions{
 		return value;
 	}
 }
-
-
-	
