@@ -7,22 +7,21 @@ export class JsonToStringPipe implements PipeTransform {
 
   transform(value: any, ...args: any): any {
     
-    if (value){
+  	if(value){		
 
-      let arr = JSON.parse(value);
-      let str = "";
+  		let arr = JSON.parse(value);
+  		let str = "";
 
-      for (const i in arr){
+  		for(const i in arr){
 
-        str += arr [i]+", ";
+  			str += arr[i]+", ";
 
-      }
+  		}
 
-      str = str.slice(0,-2);
+  		str = str.slice(0,-2);
 
-      return str;
-      
-    }
+  		return str;
+  	}
   }
 
 }
