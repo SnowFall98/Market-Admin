@@ -9,6 +9,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+//Vincular el Interceptor
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { IntInterceptor } from './interceptor/int.interceptor';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -20,7 +24,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [{
+
+    provide: HTTP_INTERCEPTORS,
+    useClass:IntInterceptor,
+    multi: true
+
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
