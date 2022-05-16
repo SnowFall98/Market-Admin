@@ -19,15 +19,13 @@ export class alerts{
 	static confirmAlert(title:string, text:string,icon:SweetAlertIcon, confirmButtonText:string){
 
 		return Swal.fire({
-
-			title:title,
+			title: title,
 			text: text,
 			icon: icon,
 			showCancelButton: true,
 			confirmButtonColor: '#3085d6',
 			cancelButtonColor: '#d33',
 			confirmButtonText: confirmButtonText
-
 		})
 
 	}
