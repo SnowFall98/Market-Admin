@@ -7,9 +7,10 @@ export const environment = {
   urlFirebase: 'https://market-place-363dc-default-rtdb.firebaseio.com/',
   urlLogin: 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBR9IUBZFVT4l1shmmdo1FDELSCOlER3zw',
   urlGetUser: 'https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyBR9IUBZFVT4l1shmmdo1FDELSCOlER3zw',
-  urlFiles: 'http://localhost/sistemas-angular/marketplace/src/assets/img/',
-  adminFiles: 'http://localhost/sistemas-angular/marketplace/src/assets/img/index.php?key=AIzaSyBR9IUBZFVT4l1shmmdo1FDELSCOlER3zw',
-  deleteFiles:'http://localhost/sistemas-angular/marketplace/src/assets/img/delete.php?key=AIzaSyBR9IUBZFVT4l1shmmdo1FDELSCOlER3zw'
+  urlFiles: 'http://localhost/Market/src/assets/img/',
+  adminFiles: 'http://localhost/Market/src/assets/img/index.php?key=AIzaSyBR9IUBZFVT4l1shmmdo1FDELSCOlER3zw',
+  deleteFiles:'http://localhost/Market/src/assets/img/delete.php?key=AIzaSyBR9IUBZFVT4l1shmmdo1FDELSCOlER3zw',
+  urlRefreshToken: 'https://securetoken.googleapis.com/v1/token?key=AIzaSyBR9IUBZFVT4l1shmmdo1FDELSCOlER3zw'
 };
 
 /*
