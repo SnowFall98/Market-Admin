@@ -4,117 +4,116 @@ import { UsersService } from 'src/app/services/users.service';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import {animate, state, style, transition, trigger} from '@angular/animations';
 import { environment } from 'src/environments/environment';
 import { functions } from 'src/app/helpers/functions';
-import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
-  selector: 'app-users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css'],
-  animations: [
-    trigger ('detailExpand',[
-      state('collapsed, void', style({height: '0px', minHeight: '0', display: 'none'})),
-      state('expanded', style({height: '*'})),
-      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
-      transition('expanded <=> void', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)'))
-    ])
-  ]
+	selector: 'app-users',
+	templateUrl: './users.component.html',
+	styleUrls: ['./users.component.css'],
+    animations: [
+	    trigger('detailExpand', [
+	      state('collapsed, void', style({height: '0px', minHeight: '0', display: 'none'})),
+	      state('expanded', style({height: '*'})),
+	      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+	      transition('expanded <=> void', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)'))
+	    ])
+  	]
 })
 export class UsersComponent implements OnInit {
 
-  /*=============================================
+	/*=============================================
+	Variable para nombrar las columnas de nuestra tabla en Angular Material
+	=============================================*/
+	displayedColumns: string[] = [  'position',  
+									'email',
+									'actions'];
+
+	/*=============================================
+	Variable global que instancie la data que aparecerá en la Tabla
+	=============================================*/
+	dataSource!:MatTableDataSource<Iusers>;
+	
+	/*=============================================
 	Variable global que tipifica la interfaz de usuario
 	=============================================*/
 
-  users:Iusers[] = [];
+	users:Iusers[] = [];
 
-  /*=============================================
-	Variable global que instancie la data que aparecerá en la Tabla
-	=============================================*/
-
-	dataSource!:MatTableDataSource<Iusers>;
-
-  /*=============================================
-	Variable para nombrar las columnas de nuestra tabla en Angular Material
-	=============================================*/
-
-  displayedColumns: string[] = [
-    'position',
-    'email',
-    'actions'
-  ];
-
-  /*=============================================
+	/*=============================================
 	Variable global que informa a la vista cuando hay una expansión de la tabla
 	=============================================*/
 
-  expandedElement!: Iusers | null;
-
-  /*=============================================
+	expandedElement!: Iusers | null;
+	
+	/*=============================================
 	Variable global que captura la ruta de los archivos de imagen
 	=============================================*/
 
-  path = environment.urlFiles;
+	path = environment.urlFiles;
 
-  /*=============================================
+	/*=============================================
 	Variable global para definir tamaños de pantalla
 	=============================================*/
 
-  screenSizeSM = false;
+	screenSizeSM = false;
 
-  /*=============================================
+	/*=============================================
+	Variable global para saber cuando finaliza la carga de los datos
+	=============================================*/
+	loadData = false;
+
+	/*=============================================
 	Paginación y orden
 	=============================================*/
 
-  @ViewChild(MatPaginator) paginator !: MatPaginator;
-  @ViewChild(MatSort) sort !: MatSort;
+	@ViewChild(MatPaginator) paginator!: MatPaginator;
+	@ViewChild(MatSort) sort!: MatSort;
 
-  /*=============================================
-	Variable global para saber cuando finaliza la carga de los datos
-	=============================================*/
+  	constructor(private usersService: UsersService) { }
 
-  loadData = false;
+  	ngOnInit(): void {
 
-  constructor(private userService: UsersService) { }
+  		this.getData();
 
-  ngOnInit(): void {
-
-    this.getData();
-
-    /*=============================================
+  		/*=============================================
 		Definir tamaños de pantalla
 		=============================================*/
 
-    if(functions.screenSize(0, 767)){
+		if(functions.screenSize(0, 767)){
 
-      this.screenSizeSM = true;
-    }else {
+			this.screenSizeSM = true;
 
-      this.screenSizeSM = false;
+		}else{
 
-      this.displayedColumns.splice(1, 0, 'displayName');
-      this.displayedColumns.splice(2, 0, 'username');
-    }
-  }
+			this.screenSizeSM = false;
 
-  getData(){
+			this.displayedColumns.splice(1, 0, 'displayName');
+			this.displayedColumns.splice(2, 0, 'username');	
+		}
+  	}
 
-    this.loadData = true;
+  	/*=============================================
+	función para tomar la data de usuarios
+	=============================================*/
 
-    this.userService.getData().subscribe((resp:any)=>{
+  	getData(){
 
-      /*=============================================
+  		this.loadData = true;
+
+  		this.usersService.getData().subscribe((resp:any)=>{
+
+  			/*=============================================
 			Integrando respuesta de base de datos con la interfaz
 			=============================================*/
+  			let position = 1;
 
-      let position = 1;
-
-      this.users = Object.keys(resp).map(a=>({
-
-        id:a,
-        position:position++,
-        address:resp[a].address,
+  			this.users = Object.keys(resp).map(a=> ({
+  				
+  				id:a,
+  				position:position++,
+  				address:resp[a].address,
 				city:resp[a].city,
 				country:resp[a].country,
 				country_code:resp[a].country_code,
@@ -127,34 +126,30 @@ export class UsersComponent implements OnInit {
 				username:resp[a].username,
 				wishlist:resp[a].wishlist
 
-      } as Iusers));
+  			} as Iusers ));
 
-      this.dataSource = new MatTableDataSource(this.users);
+  			this.dataSource = new MatTableDataSource(this.users);	
 
-      this.dataSource.paginator = this.paginator;
+  			this.dataSource.paginator = this.paginator;	
 
-      this.dataSource.sort = this.sort;
+  			this.dataSource.sort = this.sort;
 
-      this.loadData = false;
+  			this.loadData = false;
 
-    })
-  }
+  		})
+  	}
 
-  /*=============================================
+  	/*=============================================
 	Filtro de Búsqueda
 	=============================================*/
 
-  applyFilter(event: Event){
+	applyFilter(event: Event) {
+	    const filterValue = (event.target as HTMLInputElement).value;
+	    this.dataSource.filter = filterValue.trim().toLowerCase();
 
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLocaleLowerCase();
-
-    if(this.dataSource.paginator){
-
-      this.dataSource.paginator.firstPage();
-
-    }
-
-  }
+     	if (this.dataSource.paginator) {
+      		this.dataSource.paginator.firstPage();
+    	}
+  	}
 
 }
