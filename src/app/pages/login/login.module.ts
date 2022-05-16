@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
-//componente
-import { LoginComponent } from './login.component';
 //ruta
 import { LoginRoutingModule } from './login-routing.module';
 
+//componente
+import { LoginComponent } from './login.component';
 
 @NgModule({
   declarations: [LoginComponent],
