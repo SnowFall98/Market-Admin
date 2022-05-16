@@ -1,59 +1,57 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { CanActivate, Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-
+	
 	constructor(private router: Router, private http: HttpClient ){}
 
-  canActivate(): Promise<boolean>{
+	canActivate(): Promise<boolean>{
+    
+    	return new Promise(resolve =>{
 
-    return new Promise(resolve =>{
-
-      /*=============================================
+    		/*=============================================
 			Validamos que el token si exista
 			=============================================*/
 
-      if(localStorage.getItem('token') != null){
+			if(localStorage.getItem('token') != null){
 
-        /*=============================================
+				/*=============================================
 				Validamos que el token si sea real
 				=============================================*/
 
-        let body = {
+				let body = {
 
-          idToke: localStorage.getItem('token')
+					idToken: localStorage.getItem('token')
+				}
 
-        }
+				this.http.post(environment.urlGetUser, body).subscribe(
 
-        this.http.post(environment.urlGetUser, body).subscribe(
+					resp=>{
 
-          resp=>{
+						resolve(true);
+					
+					},
+					err=>{
 
-            resolve(true);
+					    localStorage.removeItem('token');
+						localStorage.removeItem('refreshToken');
+						this.router.navigateByUrl("/login");
+						resolve(false);
 
-          },
+					}
+				)				
 
-          err=>{
+			}else{
 
-            localStorage.removeItem('token');
-            localStorage.removeItem('refreshToken');
-            this.router.navigateByUrl("/login");
-            resolve(false);
-
-          }
-        )
-        
-      }else{
-
-        this.router.navigateByUrl("/login");
-        resolve(false);
-
-      }
-    })
-  }
+				this.router.navigateByUrl("/login");
+				resolve(false);
+			
+			}
+    	})
+  	}  
 }
