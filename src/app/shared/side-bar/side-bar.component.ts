@@ -8,21 +8,18 @@ import { Router } from '@angular/router';
 })
 export class SideBarComponent implements OnInit {
 
-  constructor(private router: Router) { }
+	constructor(private router: Router) { }
 
-  ngOnInit(): void {
-  }
+	ngOnInit(): void {
+	}
 
-  /*=============================================
+  	/*=============================================
 	Función de salida del sistema
 	=============================================*/
+	logout(){
 
-  logout(){
-
-    localStorage.removeItem('token');
-    localStorage.removeItem('refreshToken');
-    this.router.navigateByUrl("/login");
-
-  }
-
+		localStorage.removeItem('token');
+		localStorage.removeItem('refreshToken');
+		this.router.navigateByUrl("/login");
+	}
 }
