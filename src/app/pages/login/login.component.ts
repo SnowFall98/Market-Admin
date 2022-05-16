@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-    /*=============================================
+	/*=============================================
 	Creamos grupo de controles
 	=============================================*/
 
@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
 
 	formSubmitted = false;
 
-  	constructor(private form: FormBuilder, private loginService: LoginService, private router: Router) { }
+	constructor(private form: FormBuilder, private loginService: LoginService, private router: Router) { }
 
 	ngOnInit(): void {
 	}
@@ -105,7 +105,7 @@ export class LoginComponent implements OnInit {
 			}
 
 		);
-
+	
 	}
 
 	/*=============================================
