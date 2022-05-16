@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -7,15 +7,14 @@ import { environment } from 'src/environments/environment';
 })
 export class UsersService {
 
-  constructor(private http:HttpClient) { }
+	constructor(private http:HttpClient) { }
 
-  /*=============================================
+	/*=============================================
 	Tomar la data de la colección usuarios en Firebase
 	=============================================*/
 
-  getData(){
+	getData(){
 
-    return this.http.get(`${environment.urlFirebase}users.json`);
-    
-  }
+		return this.http.get(`${environment.urlFirebase}users.json`);
+	}
 }
