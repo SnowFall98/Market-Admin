@@ -19,7 +19,6 @@ import {MatIconModule} from '@angular/material/icon';
 //pipes
 import { PipesModule } from '../../../pipes/pipes.module';
 import { EditStoresComponent } from './edit-stores/edit-stores.component';
-//import { EditStoresComponent } from './edit-stores/edit-stores.component';
 
 @NgModule({
   declarations: [StoresComponent, EditStoresComponent],
