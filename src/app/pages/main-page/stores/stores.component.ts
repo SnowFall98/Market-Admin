@@ -8,6 +8,7 @@ import { MatSort } from '@angular/material/sort';
 import { StoresService } from 'src/app/services/stores.service';
 import { MatDialog } from '@angular/material/dialog';
 import { functions } from 'src/app/helpers/functions';
+import { EditStoresComponent } from './edit-stores/edit-stores.component';
 
 @Component({
   selector: 'app-stores',
@@ -162,6 +163,24 @@ export class StoresComponent implements OnInit {
 
   editStore(id:string){
 
+    const dialogRef = this.dialog.open(EditStoresComponent, {
+      width:'100%',
+			data: {
+				id: id
+			}
+    })
+
+    /*=============================================
+		Actualizar el listado de la tabla
+		=============================================*/
+
+    dialogRef.afterClosed().subscribe(result =>{
+
+      if(result){
+
+        this.getData();
+      }
+    })
   }
 
 }
