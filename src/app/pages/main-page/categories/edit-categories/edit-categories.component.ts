@@ -120,8 +120,6 @@ export class EditCategoriesComponent implements OnInit {
 
 	editCategory(){
 
-		this.loadData = true;
-
 		/*=============================================
 		Validamos que el formulario haya sido enviado
 		=============================================*/
@@ -136,6 +134,8 @@ export class EditCategoriesComponent implements OnInit {
 						
 			return;
 		}
+		
+		this.loadData = true;
 
 		/*=============================================
 		Subir imagen al servidor

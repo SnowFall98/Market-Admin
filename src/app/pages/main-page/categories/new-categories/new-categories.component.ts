@@ -138,8 +138,6 @@ export class NewCategoriesComponent implements OnInit {
 
 	saveCategory(){
 
-		this.loadData = true;
-
 		/*=============================================
 		Validamos que el formulario haya sido enviado
 		=============================================*/
@@ -154,6 +152,8 @@ export class NewCategoriesComponent implements OnInit {
 						
 			return;
 		}
+		
+		this.loadData = true;
 
 		/*=============================================
    		Subir imagen al servidor
