@@ -95,9 +95,7 @@ export class NewSubcategoriesComponent implements OnInit {
 	=============================================*/
 
 	saveSubCategory(){
-
-		this.loadData = true;
-
+		
 		/*=============================================
 		Validamos que el formulario haya sido enviado
 		=============================================*/
@@ -112,6 +110,8 @@ export class NewSubcategoriesComponent implements OnInit {
 						
 			return;
 		}
+		
+		this.loadData = true;
 
 		/*=============================================
 		Capturamos la información del formulario en la interfaz

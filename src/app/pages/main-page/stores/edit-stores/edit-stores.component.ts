@@ -190,8 +190,6 @@ export class EditStoresComponent implements OnInit {
 
   editStore(){
 
-    this.loadData = true;
-
     /*=============================================
 		Validamos que el formulario haya sido enviado
 		=============================================*/
@@ -207,6 +205,8 @@ export class EditStoresComponent implements OnInit {
       return;
 
     }
+    
+		this.loadData = true;
 
     /*=============================================
 		Subir imagen del logo al servidor

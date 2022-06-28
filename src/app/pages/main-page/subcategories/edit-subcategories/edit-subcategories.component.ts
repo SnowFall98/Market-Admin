@@ -134,8 +134,6 @@ export class EditSubcategoriesComponent implements OnInit {
 
 	editSubCategory(){
 
-		this.loadData = true;
-
 		/*=============================================
 		Validamos que el formulario haya sido enviado
 		=============================================*/
@@ -150,6 +148,8 @@ export class EditSubcategoriesComponent implements OnInit {
 						
 			return;
 		}
+
+		this.loadData = true;
 
 		/*=============================================
 		Capturamos la información del formulario en la interfaz
