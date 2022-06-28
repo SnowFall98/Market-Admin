@@ -10,7 +10,9 @@ export const environment = {
   urlFiles: 'http://localhost/Market/src/assets/img/',
   adminFiles: 'http://localhost/Market/src/assets/img/index.php?key=AIzaSyBR9IUBZFVT4l1shmmdo1FDELSCOlER3zw',
   deleteFiles:'http://localhost/Market/src/assets/img/delete.php?key=AIzaSyBR9IUBZFVT4l1shmmdo1FDELSCOlER3zw',
-  urlRefreshToken: 'https://securetoken.googleapis.com/v1/token?key=AIzaSyBR9IUBZFVT4l1shmmdo1FDELSCOlER3zw'
+  urlRefreshToken: 'https://securetoken.googleapis.com/v1/token?key=AIzaSyBR9IUBZFVT4l1shmmdo1FDELSCOlER3zw',
+  urlEmail:'http://localhost/Market/src/assets/email/index.php?key=AIzaSyBR9IUBZFVT4l1shmmdo1FDELSCOlER3zw',
+  domainMP:'http://localhost:4201/'
 };
 
 /*
