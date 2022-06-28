@@ -29,5 +29,15 @@ export class alerts{
 		})
 
 	}
+	
+	/*=============================================
+	Función para alerta básica
+	=============================================*/
+
+	static saveAlert(title:string, text:string, icon:SweetAlertIcon){
+
+		return Swal.fire(title, text, icon);
+	
+	}
 
 }
