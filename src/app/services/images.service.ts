@@ -15,6 +15,21 @@ export class ImagesService {
 
 	uploadImage(file:any, path:string, folder:string, width:number, height:number, name:any){
 
+		/*=============================================
+		Validar parámetro File
+		=============================================*/
+
+		let f;
+		
+		if(file.target != undefined){
+
+			f = file.target.files[0]
+
+		}else {
+
+			f = file
+		}
+
 		var formData = new FormData();
 		formData.append("file", file.target.files[0])
 		formData.append("path", path)
