@@ -36,5 +36,14 @@ export class StoresService {
 		return this.http.patch(`${environment.urlFirebase}stores/${id}.json`, data);
 
 	}
+
+	/*=============================================
+	Tomar data filtrada de la colección categorías en Firebase
+	=============================================*/
+
+	getFilterData(orderBy: string, equalTo:string){
+
+		return this.http.get(`${environment.urlFirebase}stores.json?orderBy="${orderBy}"&equalTo="${equalTo}"&print=pretty`);
+	}
   
 }
