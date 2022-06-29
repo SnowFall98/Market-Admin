@@ -18,4 +18,24 @@ export class OrdersService {
     return this.http.get(`${environment.urlFirebase}orders.json`);
     
   }
+
+  /*=============================================
+  Tomar un item de la data colección categorías en Firebase
+  =============================================*/
+
+  getItem(id: string){
+
+    return this.http.get(`${environment.urlFirebase}orders/${id}.json`);
+
+  }
+
+  /*=============================================
+  Actualizar información 
+  =============================================*/
+
+  patchData(id:string, data:object){
+
+    return this.http.patch(`${environment.urlFirebase}orders/${id}.json`, data);
+    
+  }
 }
