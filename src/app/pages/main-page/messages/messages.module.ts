@@ -18,9 +18,10 @@ import { PipesModule } from '../../../pipes/pipes.module';
 
 //componente
 import { MessagesComponent } from './messages.component';
+import { EditMessagesComponent } from './edit-messages/edit-messages.component';
 
 @NgModule({
-  declarations: [MessagesComponent],
+  declarations: [MessagesComponent, EditMessagesComponent],
   imports: [
     CommonModule,
     MessagesRoutingModule,
