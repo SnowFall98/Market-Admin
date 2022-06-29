@@ -17,4 +17,14 @@ export class UsersService {
 
 		return this.http.get(`${environment.urlFirebase}users.json`);
 	}
+
+	/*=============================================
+	Tomar data filtrada de la colección categorías en Firebase
+	=============================================*/
+
+	getFilterData(orderBy:string, equalTo:string){
+
+		return this.http.get(`${environment.urlFirebase}users.json?orderBy="${orderBy}"&equalTo="${equalTo}"&print=pretty`);
+
+	}
 }
