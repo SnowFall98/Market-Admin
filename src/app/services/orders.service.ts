@@ -7,35 +7,35 @@ import { environment } from 'src/environments/environment';
 })
 export class OrdersService {
 
-  constructor(private http:HttpClient) { }
+   constructor(private http:HttpClient ) { } 
 
   /*=============================================
   Tomar la data de la colección órdenes en Firebase
   =============================================*/
 
-  getData(){
+  getData(){ 
 
-    return this.http.get(`${environment.urlFirebase}orders.json`);
-    
-  }
-
-  /*=============================================
-  Tomar un item de la data colección categorías en Firebase
-  =============================================*/
-
-  getItem(id: string){
-
-    return this.http.get(`${environment.urlFirebase}orders/${id}.json`);
+     return this.http.get(`${environment.urlFirebase}orders.json`);
 
   }
 
   /*=============================================
-  Actualizar información 
-  =============================================*/
+   Tomar un item de la data colección categorías en Firebase
+   =============================================*/
 
-  patchData(id:string, data:object){
+   getItem(id: string) {
 
-    return this.http.patch(`${environment.urlFirebase}orders/${id}.json`, data);
-    
-  }
+      return this.http.get(`${environment.urlFirebase}orders/${id}.json`);
+      
+   }
+
+   /*=============================================
+   Actualizar información 
+   =============================================*/
+
+   patchData(id:string, data:object){
+
+      return this.http.patch(`${environment.urlFirebase}orders/${id}.json`, data);
+
+   }
 }
