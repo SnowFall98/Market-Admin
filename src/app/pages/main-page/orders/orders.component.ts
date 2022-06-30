@@ -82,15 +82,15 @@ export class OrdersComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private ordersService: OrdersService, public dialog: MatDialog) { }
+  constructor(private ordersService: OrdersService, public dialog: MatDialog  ) { }
 
   ngOnInit(): void {
 
     this.getData();
 
-      /*=============================================
-      Definir tamaños de pantalla
-      =============================================*/
+    /*=============================================
+    Definir tamaños de pantalla
+    =============================================*/
 
     if(functions.screenSize(0, 767)){
 
@@ -100,9 +100,9 @@ export class OrdersComponent implements OnInit {
 
       this.screenSizeSM = false;
 
-      this.displayedColumns.splice(2, 0, 'id')
-      this.displayedColumns.splice(2, 0, 'product')
-      this.displayedColumns.splice(3, 0, 'quantity')
+      this.displayedColumns.splice(2, 0, 'id');
+      this.displayedColumns.splice(2, 0, 'product');
+      this.displayedColumns.splice(3, 0, 'quantity');
     }
 
   }
@@ -117,29 +117,33 @@ export class OrdersComponent implements OnInit {
 
     this.ordersService.getData().subscribe((resp:any)=>{
 
+      /*=============================================
+      Integrando respuesta de base de datos con la interfaz
+      =============================================*/
+
       let position = 1;
 
       this.orders = Object.keys(resp).map(a=>({
         id: a,
-        positon: position++,
-        address: resp[a].address,
-        category: resp[a].category,
-        city: resp[a].city,
-        country: resp[a].country,
-        details: resp[a].details,
-        email: resp[a].email,
-        image: resp[a].image,
-        info: resp[a].info,
-        phone: resp[a].phone,
-        price: resp[a].price,
-        process: JSON.parse(resp[a].process),
-        product: resp[a].product,
-        quantity: resp[a].quantity,
-        status: resp[a].status,
-        store: resp[a].store,
-        url: resp[a].url,
-        user: resp[a].user
-      } as Iorders));
+        position: position++,
+        address : resp[a].address,
+        category : resp[a].category,
+        city : resp[a].city,
+        country : resp[a].country,
+        details : resp[a].details,
+        email : resp[a].email,
+        image : resp[a].image,
+        info : resp[a].info,
+        phone : resp[a].phone,
+        price : resp[a].price,
+        process :JSON.parse(resp[a].process),
+        product : resp[a].product,
+        quantity : resp[a].quantity,
+        status : resp[a].status,
+        store : resp[a].store,
+        url : resp[a].url,
+        user : resp[a].user
+      } as Iorders ));
 
       this.dataSource = new MatTableDataSource(this.orders);
 
@@ -155,15 +159,13 @@ export class OrdersComponent implements OnInit {
   /*=============================================
   Filtro de Búsqueda
   =============================================*/
-  applyFilter(event: Event){
 
+  applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLocaleLowerCase();
+    this.dataSource.filter = filterValue.trim().toLowerCase();
 
-    if(this.dataSource.paginator){
-      
+    if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
-
     }
   }
 
