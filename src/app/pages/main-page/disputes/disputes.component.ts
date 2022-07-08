@@ -9,7 +9,10 @@ import { DisputesService } from 'src/app/services/disputes.service';
 import { MatDialog } from '@angular/material/dialog';
 import { functions } from 'src/app/helpers/functions';
 import { EditDisputesComponent } from './edit-disputes/edit-disputes.component';
+import { NavBarComponent } from '../../../shared/nav-bar/nav-bar.component';
+
 @Component({
+  providers: [NavBarComponent],
   selector: 'app-disputes',
   templateUrl: './disputes.component.html',
   styleUrls: ['./disputes.component.css'],
@@ -67,7 +70,7 @@ export class DisputesComponent implements OnInit {
 
   nameStore = environment.nameStore;
 
-  constructor(private disputesService: DisputesService, public dialog: MatDialog) { }
+  constructor(private disputesService: DisputesService, public dialog: MatDialog, private navBarComponent:NavBarComponent) { }
 
   ngOnInit(): void {
 
@@ -165,6 +168,7 @@ export class DisputesComponent implements OnInit {
       if(result){
 
         this.getData();
+        this.navBarComponent.getDisputes();
 
       }
     })
