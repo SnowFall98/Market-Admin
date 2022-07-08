@@ -9,8 +9,10 @@ import { MessagesService } from 'src/app/services/messages.service';
 import { MatDialog } from '@angular/material/dialog';
 import { functions } from 'src/app/helpers/functions';
 import { EditMessagesComponent } from './edit-messages/edit-messages.component';
+import { NavBarComponent } from '../../../shared/nav-bar/nav-bar.component';
 
 @Component({
+  providers: [NavBarComponent],
   selector: 'app-messages',
   templateUrl: './messages.component.html',
   styleUrls: ['./messages.component.css'],
@@ -68,7 +70,7 @@ export class MessagesComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
 
 
-  constructor(private messagesService: MessagesService, public dialog: MatDialog) { }
+  constructor(private messagesService: MessagesService, public dialog: MatDialog, private navBarComponent:NavBarComponent) { }
 
   ngOnInit(): void {
 
@@ -168,6 +170,7 @@ export class MessagesComponent implements OnInit {
       if(result){
 
         this.getData();
+        this.navBarComponent.getMessages();
 
       }
     })
