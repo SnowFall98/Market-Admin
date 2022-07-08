@@ -39,4 +39,24 @@ export class SalesService {
     return this.http.patch(`${environment.urlFirebase}sales/${id}.json?auth=${idToken}`,value);
     
   }
+
+  /*=============================================
+  Tomar data de la colección ventas por rangos de fecha
+  =============================================*/
+
+  getDataByDate(startDate: string, endDate: string){
+
+    return this.http.get(`${environment.urlFirebase}sales.json?orderBy="date"&startAt="${startDate}"&endAt="${endDate}"&print=pretty`);
+  
+  }
+
+  /*=============================================
+  Tomar rangos limitados
+  =============================================*/
+ 
+  getLatestData(){
+
+    return this.http.get(`${environment.urlFirebase}sales.json?orderBy="date"&limitToLast=5&print=pretty`);
+    
+  }
 }
