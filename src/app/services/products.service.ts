@@ -66,4 +66,14 @@ export class ProductsService {
 		return this.http.delete(`${environment.urlFirebase}products/${id}.json`);
 
 	}
+
+	/*=============================================
+	Tomar rangos limitados
+	=============================================*/
+
+	getLatestData(){
+		
+		return this.http.get(`${environment.urlFirebase}products.json?orderBy="date_created"&limitToLast=5&print=pretty`);
+
+	}
 }
