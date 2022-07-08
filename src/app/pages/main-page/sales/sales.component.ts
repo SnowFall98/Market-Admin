@@ -146,8 +146,6 @@ export class SalesComponent implements OnInit {
 
             this.sales[index].store = resp.store;
 
-            console.log("Sales", this.sales[index].store = resp.store)
-            
           }
         );
       })
